@@ -41,7 +41,7 @@ public class ArticleController {
         //System.out.println(saved.toString());
         log.info(saved.toString());
 
-        return"";
+        return"redirect:/articles/" + saved.getID();
     }
 
     // 단일 데이터 조회하기.

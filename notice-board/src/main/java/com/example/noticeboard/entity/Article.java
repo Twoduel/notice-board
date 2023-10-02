@@ -24,4 +24,9 @@ public class Article {
     Article(){
         //롬복으로 간단히 줄이는 방법 : @NoArgsConstructor
     }
+
+    // 리다이렉트에 필요한 메서드.
+    public Long getID() {
+        return id;
+    }
 }
