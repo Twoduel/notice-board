@@ -29,4 +29,5 @@ public class Article {
     public Long getID() {
         return id;
     }
+
 }
