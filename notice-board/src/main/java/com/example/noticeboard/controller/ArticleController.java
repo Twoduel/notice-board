@@ -120,7 +120,8 @@ public class ArticleController {
             rttr.addFlashAttribute("msg", "삭제되었습니다!");
         }
         // 3. 결과 페이지로 리다이렉트 하기.
-        return "redirect:/articles";
+        return "redirect:/a" +
+                "rticles";
     }
 
 }
