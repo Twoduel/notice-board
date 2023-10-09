@@ -4,6 +4,7 @@ import com.example.noticeboard.dto.ArticleForm;
 import com.example.noticeboard.entity.Article;
 import com.example.noticeboard.repository.ArticleRepository;
 import com.example.noticeboard.service.ArticleService;
+import jdk.javadoc.doclet.Reporter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -52,6 +53,14 @@ public class ArticleApiController {
         Article deleted = articleService.delete(id);
         return (deleted != null)?
                 ResponseEntity.status(HttpStatus.NO_CONTENT).build():
+                ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+    }
+
+    @PostMapping("/api/transaction-test")
+    public ResponseEntity<List<Article>> transactionTest(@RequestBody List<ArticleForm> dtos){
+        List<Article> createdList = articleService.createArticles(dtos);
+        return (createdList != null)?
+                ResponseEntity.status(HttpStatus.OK).body(createdList):
                 ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
     }
 }
