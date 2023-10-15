@@ -13,21 +13,21 @@ import java.util.List;
 @Service
 public class CommentService {
     @Autowired
-    private CommentRepository commentRepository;  // ��� �������͸� ��ü ����.
+    private CommentRepository commentRepository;  // 댓글 리파지터리 객체 주입.
     @Autowired
-    private ArticleRepository articleRepository;  // �Խñ� �������͸� ��ü ����.
+    private ArticleRepository articleRepository;  // 게시글 리파지터리 객체 주입.
 
     public List<CommentDto> comments(Long articleId) {
-        // 1. ��� ��ȸ.
+        // 1. 댓글 조회.
         List<Comment> comments = commentRepository.findByArticleId(articleId);
-        // 2. ��ƼƼ -> DTO ��ȯ.
+        // 2. 엔티티 -> DTO 변환ȯ.
         List<CommentDto> dtos = new ArrayList<CommentDto>();
         for(int i=0; i<comments.size(); i++){
             Comment c = comments.get(i);
             CommentDto dto = CommentDto.createCommentDto(c);
             dtos.add(dto);
         }
-        // 3. ��� ��ȯ.
+        // 3. 결과 반환.
         return dtos;
     }
 }
